@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Button } from 'semantic-ui-react'
 
 
 class TabMenu extends Component{
@@ -12,8 +12,6 @@ class TabMenu extends Component{
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
-  renderQuestions = ( activeItem ) => this.displays[activeItem]
-
   render() {
     const { activeItem } = this.state
 
@@ -38,6 +36,10 @@ class TabMenu extends Component{
             onClick={this.handleItemClick}
           />
         </Menu>
+        
+        <Button primary onClick={this.props.addQuestion}>
+          Add Input
+        </Button>
       </div>
     )
   }
