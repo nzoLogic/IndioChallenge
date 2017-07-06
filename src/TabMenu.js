@@ -15,7 +15,7 @@ class TabMenu extends Component{
   
   render() {
     const { activeItem } = this.state
-
+    const { questions } = this.props
     return (
       <div>
         <Menu>
@@ -37,7 +37,7 @@ class TabMenu extends Component{
             onClick={this.handleItemClick}
           />
         </Menu>
-        <QuestionForm />
+        <QuestionForm questions={questions} />
         <Button primary onClick={this.props.addQuestion}>
           Add Input
         </Button>
