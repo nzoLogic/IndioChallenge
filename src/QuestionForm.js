@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import { Form, Input, Container } from 'semantic-ui-react'
+import { Form, Input, Container, Card } from 'semantic-ui-react'
 import QuestionInput from './QuestionInput.js'
 
 class QuestionForm extends Component {
   constructor(props){
     super(props)
   }
+  
   render(){
-    const questions = [{ q: 'What would you like?', type: 'text', subQ: null}]
+    const { questions } = this.props
     return(
-      <Container>
-        <Form>
-          {questions.map( (q, i) => <QuestionInput key={i} question={q} /> )}
-        </Form>
-      </Container>
+      <Form>
+        {questions.map( (q, i) => <QuestionInput key={i} question={q} /> )}
+      </Form>
     )
   }
   

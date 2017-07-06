@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Button } from 'semantic-ui-react'
+import { Menu, Button, Container } from 'semantic-ui-react'
 import QuestionForm from './QuestionForm.js'
 
 
@@ -37,7 +37,8 @@ class TabMenu extends Component{
             onClick={this.handleItemClick}
           />
         </Menu>
-        <QuestionForm questions={questions} />
+        <Container children={<QuestionForm questions={questions} />} />
+
         <Button primary onClick={this.props.addQuestion}>
           Add Input
         </Button>
