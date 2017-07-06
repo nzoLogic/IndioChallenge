@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react'
-import { checkStorage, addQuestion } from './Local.js'
+import { checkStorage, addQuestion, saveQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
+
+saveQuestion()
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      questions: checkStorage()
+      questions: checkStorage('questions')
     }
     this.checkStorage = checkStorage
   }
