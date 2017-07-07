@@ -3,7 +3,6 @@ import { Container } from 'semantic-ui-react'
 import { checkStorage, addQuestion, saveQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
 
-saveQuestion()
 
 class App extends Component {
   constructor(props){
@@ -14,6 +13,11 @@ class App extends Component {
     this.checkStorage = checkStorage
   }
   addQuestion = addQuestion.bind(this)
+  
+  componentWillMount(){
+    saveQuestion()
+  }
+  
   render() {
     const { questions } = this.state
     return (

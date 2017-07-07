@@ -14,5 +14,16 @@ function addQuestion(){
   this.setState({questions: questions})
 }
 
+function updateQuestionState(prev, props){
+  return{
+    question: props
+  }
+}
 
-export { checkStorage, addQuestion, saveQuestion }
+function updateState(update){
+  return {
+    state: update
+  }
+}
+
+export { checkStorage, addQuestion, saveQuestion, updateQuestionState }

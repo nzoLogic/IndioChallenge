@@ -7,7 +7,8 @@ class TabMenu extends Component{
   constructor(props){
     super(props)
     this.state = {
-      activeItem: 'Create'
+      activeItem: 'Create',
+      questions: props.questions
     }
   }
 
@@ -15,7 +16,7 @@ class TabMenu extends Component{
   
   render() {
     const { activeItem } = this.state
-    const { questions } = this.props
+    const { questions } = this.state
     return (
       <div>
         <Menu>

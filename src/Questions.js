@@ -5,8 +5,8 @@ const types = [
   {key: 'n', text: 'Number', value: 'number'},
   {key: 't', text: 'Text', value: 'text'},
 ]
-const Questions = ({q='', type=null, conditional=null, subQ=null}) => {
-  return {q, type, subQ}
+const Questions = ({q='', type='text', conditional=null, subQ=null}) => {
+  return {q, type, conditional, subQ}
 }
 
 export default Questions
