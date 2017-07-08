@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Button, Container } from 'semantic-ui-react'
 import QuestionForm from './QuestionForm.js'
+import { addQuestion } from './Local.js'
 
 
 class TabMenu extends Component{
@@ -8,10 +9,10 @@ class TabMenu extends Component{
     super(props)
     this.state = {
       activeItem: 'Create',
-      questions: props.questions
+      questions: this.props.questions
     }
+    this.addQuestion = addQuestion.bind(this)
   }
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
   render() {
@@ -40,7 +41,7 @@ class TabMenu extends Component{
         </Menu>
         <Container children={<QuestionForm questions={questions} />} />
 
-        <Button primary onClick={this.props.addQuestion}>
+        <Button primary onClick={this.addQuestion}>
           Add Input
         </Button>
       </div>

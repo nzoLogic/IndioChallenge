@@ -15,7 +15,7 @@ class QuestionForm extends Component {
     )
   }
   render(){
-    const { questions } = this.state
+    const { questions } = this.props
     return(
       <Form>
         {questions.map( this.setQuestions )}

@@ -12,7 +12,6 @@ class App extends Component {
     }
     this.checkStorage = checkStorage
   }
-  addQuestion = addQuestion.bind(this)
   
   componentWillMount(){
     saveQuestion()
@@ -23,7 +22,7 @@ class App extends Component {
     return (
       <Container>
         <h3> Form builder</h3>
-        <TabMenu questions={questions} addQuestion={this.addQuestion}/>
+        <TabMenu questions={questions} />
         
       </Container>
     );

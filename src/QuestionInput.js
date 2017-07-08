@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Input, Dropdown, Select, Button } from 'semantic-ui-react'
+import Condition from './Condition.js'
 import { updateQuestionState } from './Local.js'
+import Question from './Questions.js'
 
 const typeOptions = [
   {key: 'yn', name: 'yn', text: 'Yes/No', value: 'yn'},
@@ -16,14 +18,14 @@ class QuestionInput extends Component{
   }
   addSubQuestion = (e) => {
     const { question } = this.state
-    question['subQ'] = <QuestionInput />
+    question['subQ'] = <QuestionInput question={Question({isSub:true})}/>
     this.setState({question: question})
-    
   }
+
   handleInputChange = (e) => {
     const { question } = this.state
     let { name, value } = e.target 
-    
+
     if( !name ){
       value = e.target.parentElement.getAttribute('name') || e.target.getAttribute('name')
       name = 'type'
@@ -36,6 +38,7 @@ class QuestionInput extends Component{
     const question = this.state
     return(
       <div>
+        { this.props.question.isSub ? Condition() : '' }
         <Form.Field inline control={Input} label='Question' name='q' type={question.type} placeholder='question' value={question.value} onChange={this.handleInputChange}/>
         <Form.Field inline control={Select} label='Type' name='type' options={typeOptions} value={question.type} placeholder='select type' onChange={this.handleInputChange}/>
         
@@ -43,6 +46,7 @@ class QuestionInput extends Component{
           <Button onClick={this.addSubQuestion}>Add Sub-Input</Button>
           <Button>Delete</Button>
         </Form.Group>
+        { question.subQ }
       </div>
     )
   }
