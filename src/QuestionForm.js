@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Form, Input, Container, Card } from 'semantic-ui-react'
+import { Form, Segment } from 'semantic-ui-react'
 import QuestionInput from './QuestionInput.js'
 import { updateState } from './Local.js'
-
+import Question from './Questions.js'
 class QuestionForm extends Component {
   constructor(props){
     super(props)
@@ -11,14 +11,16 @@ class QuestionForm extends Component {
   
   setQuestions = (question, i) => {
     return(
-      <QuestionInput key={i} question={question}/>
+      <QuestionInput key={i} question={question} children={<QuestionInput question={Question({isSub:true})} />}/>
     )
   }
   render(){
     const { questions } = this.props
     return(
       <Form>
-        {questions.map( this.setQuestions )}
+        <Segment>
+          {questions.map( this.setQuestions )}
+        </Segment>
       </Form>
     )
   }

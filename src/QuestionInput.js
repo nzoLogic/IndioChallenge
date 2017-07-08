@@ -19,6 +19,7 @@ class QuestionInput extends Component{
   addSubQuestion = (e) => {
     const { question } = this.state
     question['subQ'] = <QuestionInput question={Question({isSub:true})}/>
+    
     this.setState({question: question})
   }
 
@@ -38,7 +39,7 @@ class QuestionInput extends Component{
     const question = this.state
     return(
       <div>
-        { this.props.question.isSub ? Condition() : '' }
+        { this.props.question.isSub ? Condition() : null }
         <Form.Field inline control={Input} label='Question' name='q' type={question.type} placeholder='question' value={question.value} onChange={this.handleInputChange}/>
         <Form.Field inline control={Select} label='Type' name='type' options={typeOptions} value={question.type} placeholder='select type' onChange={this.handleInputChange}/>
         
@@ -46,7 +47,8 @@ class QuestionInput extends Component{
           <Button onClick={this.addSubQuestion}>Add Sub-Input</Button>
           <Button>Delete</Button>
         </Form.Group>
-        { question.subQ }
+        
+        { this.props.children }
       </div>
     )
   }
