@@ -1,26 +1,38 @@
 import React, { Component } from 'react'
 import { Form, Segment } from 'semantic-ui-react'
-import QuestionInput from './QuestionInput.js'
-import { updateState } from './Local.js'
-import QuestionNode from './Questions.js'
+import Question from './Question.js'
+import { updateQuestionState } from './Local.js'
+import QuestionNode from './QuestionNode.js'
+
 class QuestionForm extends Component {
   constructor(props){
     super(props)
     this.state = props
+    this.updateParent = this.updateParent.bind(this)
   }
+
   
-  setQuestions = (question, i) => {
-    question['subQ'].push(QuestionNode({isSub:true}))
+  updateParent = (key, prop) => {
+    let questions = {...this.state.questions }
+    console.log(key)
+    questions[key] = prop
+    this.setState({questions: questions})
+  }
+  setQuestions(question, i){
     return(
-      <QuestionInput key={i} question={question} children={question.subQ} />
+      <Question key={i} question={question} handleInputChange={this.handleInputChange}  />
     )
   }
   render(){
-    const { questions } = this.props
+    const { questions } = this.state
     return(
       <Form>
         <Segment>
-          {questions.map( this.setQuestions )}
+          { questions.map( (question, i) => {
+            return(
+              <Question key={i} question={question} handleInputChange={this.handleInputChange}  />
+            )
+          } ) }
         </Segment>
       </Form>
     )

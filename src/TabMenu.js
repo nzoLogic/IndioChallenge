@@ -7,43 +7,31 @@ import { addQuestion } from './Local.js'
 class TabMenu extends Component{
   constructor(props){
     super(props)
-    this.state = {
-      activeItem: 'Create',
-      questions: this.props.questions
-    }
-    this.addQuestion = addQuestion.bind(this)
   }
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
   render() {
-    const { activeItem } = this.state
-    const { questions } = this.state
+    const { activeItem } = this.props
     return (
       <div>
         <Menu>
           <Menu.Item
             name='Create'
             active={activeItem === 'Create'}
-            onClick={this.handleItemClick}
+            onClick={this.props.handleTabClick}
             />
 
           <Menu.Item
             name='Preview'
             active={activeItem === 'Preview'}
-            onClick={this.handleItemClick}
+            onClick={this.props.handleTabClick}
           />
 
           <Menu.Item
             name='Export'
             active={activeItem === 'Export'}
-            onClick={this.handleItemClick}
+            onClick={this.props.handleTabClick}
           />
         </Menu>
-        <Container children={<QuestionForm questions={questions} />} />
-
-        <Button primary onClick={this.addQuestion}>
-          Add Input
-        </Button>
       </div>
     )
   }

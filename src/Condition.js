@@ -5,8 +5,7 @@ const conditionOptions = [
   {key: 'less', name: 'less', text: 'Less than' },
   {key: 'greater', name: 'greater', text: 'Greater than' }
 ]
-function Condition() {
-  console.log('condition')
+const Condition = () => {
   return(
     <Form.Group inline>
       <Form.Field inline control={Select} label='Condition' name='type' options={conditionOptions} placeholder='select type'/>
