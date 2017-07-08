@@ -1,5 +1,5 @@
 import React from 'react'
-import Questions from './Questions.js'
+import QuestionNode from './QuestionNode.js'
 
 const checkStorage = (key) => {
   return JSON.parse(window.localStorage.getItem(key)) || [] 

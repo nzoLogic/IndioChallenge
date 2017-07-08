@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Input, Dropdown, Select, Button } from 'semantic-ui-react'
 import Condition from './Condition.js'
 import { updateQuestionState } from './Local.js'
-import Question from './Questions.js'
+import QuestionNode from './Questions.js'
 
 const typeOptions = [
   {key: 'yn', name: 'yn', text: 'Yes/No', value: 'yn'},
@@ -17,30 +17,31 @@ class QuestionInput extends Component{
     this.state = this.props
   }
   addSubQuestion = (e) => {
-    const { question } = this.state
-    question['subQ'] = <QuestionInput question={Question({isSub:true})}/>
+    let question = { ...this.state.question }
+    question['subQ'].concat(QuestionNode({isSub: true}))
     
     this.setState({question: question})
   }
 
   handleInputChange = (e) => {
-    const { question } = this.state
-    let { name, value } = e.target 
+    let { name, value } = e.target, 
+        question = {...this.state.question }
 
     if( !name ){
       value = e.target.parentElement.getAttribute('name') || e.target.getAttribute('name')
       name = 'type'
     } 
     question[name] = value
-    this.setState(updateQuestionState(this.state, question))
+    this.setState(updateQuestionState(this.state.question, question))
   }
   
   render(){
     const question = this.state
+    const { subQ } = this.state.question
     return(
       <div>
-        { this.props.question.isSub ? Condition() : null }
-        <Form.Field inline control={Input} label='Question' name='q' type={question.type} placeholder='question' value={question.value} onChange={this.handleInputChange}/>
+        { this.props.question.isSub[0] ? Condition() : null }
+        <Form.Field inline control={Input} label='QuestionNode' name='q' type={question.type} placeholder='question' value={question.value} onChange={this.handleInputChange}/>
         <Form.Field inline control={Select} label='Type' name='type' options={typeOptions} value={question.type} placeholder='select type' onChange={this.handleInputChange}/>
         
         <Form.Group>
@@ -48,7 +49,9 @@ class QuestionInput extends Component{
           <Button>Delete</Button>
         </Form.Group>
         
-        { this.props.children }
+        { 
+          subQ.map( (q, i) => <QuestionInput key={i} question={q} />)
+      }
       </div>
     )
   }
@@ -56,3 +59,10 @@ class QuestionInput extends Component{
 }
 
 export default QuestionInput
+
+
+let QuestionNode = ({question='', type='text', condition=null, isSub=false, subQuestions=[]}) => {
+  return{ question, type, condition, isSub, subQuestions }
+}
+
+let questions=[QuestionNode({}), QuestionNode({}), QuestionNode({})]

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Segment } from 'semantic-ui-react'
 import QuestionInput from './QuestionInput.js'
 import { updateState } from './Local.js'
-import Question from './Questions.js'
+import QuestionNode from './Questions.js'
 class QuestionForm extends Component {
   constructor(props){
     super(props)
@@ -10,8 +10,9 @@ class QuestionForm extends Component {
   }
   
   setQuestions = (question, i) => {
+    question['subQ'].push(QuestionNode({isSub:true}))
     return(
-      <QuestionInput key={i} question={question} children={<QuestionInput question={Question({isSub:true})} />}/>
+      <QuestionInput key={i} question={question} children={question.subQ} />
     )
   }
   render(){
