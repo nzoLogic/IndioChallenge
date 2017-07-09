@@ -7,32 +7,31 @@ import QuestionNode from './QuestionNode.js'
 class QuestionForm extends Component {
   constructor(props){
     super(props)
-    this.state = props
+    this.state = {
+      questions: props.questions
+    }
     this.updateParent = this.updateParent.bind(this)
   }
-
   
+
   updateParent = (key, prop) => {
     let questions = {...this.state.questions }
-    console.log(key)
+    console.log(questions, questions[key])
     questions[key] = prop
-    this.setState({questions: questions})
+    this.props.updateQuestions(questions)
   }
-  setQuestions(question, i){
+  setQuestions = (question, i) => {
     return(
-      <Question key={i} question={question} handleInputChange={this.handleInputChange}  />
+      <Question key={i} id={i} question={question} updateParent={this.updateParent} marginLeft={0}  />
     )
   }
   render(){
-    const { questions } = this.state
+    const { questions } = this.state 
+    console.log('questions = ', questions)
     return(
       <Form>
         <Segment>
-          { questions.map( (question, i) => {
-            return(
-              <Question key={i} question={question} handleInputChange={this.handleInputChange}  />
-            )
-          } ) }
+          { questions.map( this.setQuestions ) }
         </Segment>
       </Form>
     )

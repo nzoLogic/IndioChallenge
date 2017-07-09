@@ -5,7 +5,13 @@ import TabMenu from './TabMenu.js'
 import QuestionForm from './QuestionForm.js'
 import QuestionNode from './QuestionNode.js'
 const sample = [
-  QuestionNode({subQ: [QuestionNode({isSub: true})]}),
+  QuestionNode({
+    subQ: [QuestionNode({
+      isSub: true, subQ: [
+      QuestionNode({isSub: true})
+    ]}
+  )]
+  }),
   QuestionNode({}),
   QuestionNode({}),
 ]
@@ -20,8 +26,12 @@ class App extends Component {
     this.checkStorage = checkStorage
     this.addQuestion = addQuestion.bind(this)
     this.handleTabClick = this.handleTabClick.bind(this)
+    this.updateQuestions = this.updateQuestions.bind(this)
   }
   
+  updateQuestions(update){
+    this.setState({questions: update})
+  }
   componentWillMount(){
     saveQuestion()
   }
@@ -35,7 +45,7 @@ class App extends Component {
         <h3> Form builder</h3>
         <TabMenu handleTabClick={this.handleTabClick} activeItem={this.state.activeItem}/>
         
-        <QuestionForm questions={questions} />
+        <QuestionForm questions={questions} updateQuestions={this.updateQuestions} />
         
         <Button primary onClick={this.addQuestion}>
           Add Input
