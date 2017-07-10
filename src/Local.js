@@ -6,11 +6,11 @@ const checkStorage = (key) => {
 }
 
 const saveQuestion = (questions) => {
-  window.localStorage.setItem('questions', JSON.stringify([QuestionNode({})]))
+  window.localStorage.setItem('questions', JSON.stringify([]))
 }
 function addQuestion(){
-  let {questions} = this.state
-  questions = questions.concat(QuestionNode({}))
+  const { questions } = this.state
+  questions.push(QuestionNode({}))
   this.setState({questions: questions})
 }
 

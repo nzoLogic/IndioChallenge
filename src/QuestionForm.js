@@ -16,18 +16,16 @@ class QuestionForm extends Component {
 
   updateParent = (key, prop) => {
     let questions = {...this.state.questions }
-    console.log(questions, questions[key])
     questions[key] = prop
     this.props.updateQuestions(questions)
   }
   setQuestions = (question, i) => {
     return(
-      <Question key={i} id={i} question={question} updateParent={this.updateParent} marginLeft={0}  />
+      <Question key={i} path={`[${i}]`} question={question} updateQuestions={this.props.updateQuestions} marginLeft={0}  />
     )
   }
   render(){
     const { questions } = this.state 
-    console.log('questions = ', questions)
     return(
       <Form>
         <Segment>

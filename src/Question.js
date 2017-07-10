@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Dropdown, Select, Button } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import Condition from './Condition.js'
 import TypeInput from './TypeInput.js'
 import QuestionInput from './QuestionInput.js'
@@ -28,8 +28,7 @@ class Question extends Component{
       name = 'type'
     } 
     question[name] = value
-    this.setState({question: question})
-    this.props.updateParent(this.props.id, question)
+    this.props.updateQuestions(this.props.path, question)
   }
   
   increaseMargin(margin){
@@ -56,7 +55,7 @@ class Question extends Component{
           <Button>Delete</Button>
         </Form.Group>
         
-        { question.subQ.map( (q, i) => <Question key={i} question={q} marginLeft={this.increaseMargin(props.marginLeft)} updateParent={this.props.updateParent} />) }
+        { question.subQ.map( (q, i) => <Question key={i} path={`${props.path}.subQ[${i}]`} question={q} marginLeft={this.increaseMargin(props.marginLeft)} updateQuestions={this.props.updateQuestions} />) }
       </div>
     )
   }

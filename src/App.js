@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'semantic-ui-react'
+import _ from 'lodash'
 import { checkStorage, addQuestion, saveQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
 import QuestionForm from './QuestionForm.js'
@@ -29,8 +30,10 @@ class App extends Component {
     this.updateQuestions = this.updateQuestions.bind(this)
   }
   
-  updateQuestions(update){
-    this.setState({questions: update})
+  updateQuestions(path, value){
+    const { questions } = this.state
+    _.set(questions, path, value)
+    this.setState({questions})
   }
   componentWillMount(){
     saveQuestion()
