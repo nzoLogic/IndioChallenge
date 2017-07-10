@@ -846,7 +846,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 ```
 
-When you compile the app with `npm run build`, the minification step will strip out this condition, and the resulting bundle will be smaller.
+When you compile the app with `npm run build`, the minification step will strip out this conditions, and the resulting bundle will be smaller.
 
 ### Referencing Environment Variables in the HTML
 

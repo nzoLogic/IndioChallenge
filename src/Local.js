@@ -15,6 +15,10 @@ function addQuestion(){
   this.setState({questions: questions})
 }
 
+function deleteQuestion(){
+  
+}
+
 function stringify(value, cb){
   let string = JSON.stringify(value)
   console.log(string)
@@ -22,4 +26,4 @@ function stringify(value, cb){
 }
 
 
-export { checkStorage, addQuestion, saveQuestions, stringify }
+export { checkStorage, addQuestion, deleteQuestion, saveQuestions, stringify }

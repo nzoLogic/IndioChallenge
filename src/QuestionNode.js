@@ -2,10 +2,10 @@
 const QuestionNode = ({
   question='', 
   type='text', 
-  condition=null, 
+  conditions=null, 
   isSub= false, 
   subQ=[]}) => {
-  return {question, type, condition, isSub, subQ}
+  return {question, type, conditions, isSub, subQ}
 }
 
 export default QuestionNode
