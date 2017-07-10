@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'semantic-ui-react'
 import _ from 'lodash'
-import { checkStorage, addQuestion, saveQuestion } from './Local.js'
+import { checkStorage, addQuestion, saveQuestions, stringify } from './Local.js'
 import TabMenu from './TabMenu.js'
 import QuestionForm from './QuestionForm.js'
 import QuestionNode from './QuestionNode.js'
-const sample = [
-  QuestionNode({
-    subQ: [QuestionNode({
-      isSub: true, subQ: [
-      QuestionNode({isSub: true})
-    ]}
-  )]
-  }),
-  QuestionNode({}),
-  QuestionNode({}),
-]
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      questions: sample,
       activeItem: 'Create'
     }
     this.checkStorage = checkStorage
@@ -36,7 +24,13 @@ class App extends Component {
     this.setState({questions})
   }
   componentWillMount(){
-    saveQuestion()
+    const questions = checkStorage('questions')
+    this.setState({questions: questions})
+  }
+  componentDidUpdate(){
+    console.log('component updated')
+    const { questions } = this.state
+    stringify( questions, saveQuestions)
   }
   
   handleTabClick = (e, { name }) => this.setState({ activeItem: name })
