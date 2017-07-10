@@ -46,7 +46,7 @@ class Question extends Component{
       <div style={styles}>
         { this.props.question.isSub ? Condition() : null }
         
-        <QuestionInput type={question.type} value={question.value} onChange={this.updateInputValue}/>
+        <QuestionInput type={question.type} value={question.question} onChange={this.updateInputValue}/>
         
         <TypeInput type={question.type} onChange={this.updateInputValue} />
         
