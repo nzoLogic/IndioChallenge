@@ -8,16 +8,13 @@ import QuestionNode from './QuestionNode.js'
 class Question extends Component{
   constructor(props){
     super(props)
-    this.state = {
-      question: props.question
-    }
     this.updateInputValue = this.updateInputValue.bind(this)
   }
   addSubQuestion = (e) => {
-    let question = { ...this.state.question }
-    question['subQ'].concat(QuestionNode({isSub: true}))
+    let question = { ...this.props.question }
+    question['subQ'].push(QuestionNode({isSub: true}))
     
-    this.setState({question: question})
+    this.props.updateQuestions(this.props.path, question)
   }
   
   updateInputValue(e){
