@@ -16,9 +16,7 @@ class QuestionForm extends Component {
     const { questions } = this.props 
     return(
       <Form>
-        <Segment>
           { questions.map( this.setQuestions ) }
-        </Segment>
       </Form>
     )
   }
