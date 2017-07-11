@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
-import ConditionInput from './ConditionInput.js'
+import { updateInputValue, handleConditionChange } from './QuestionHelper.js'
+import ConditionSelect from './ConditionSelect.js'
+import ConditionAnswer from './ConditionAnswer.js'
 import TypeInput from './TypeInput.js'
 import QuestionInput from './QuestionInput.js'
 import QuestionNode from './QuestionNode.js'
@@ -8,36 +10,14 @@ import QuestionNode from './QuestionNode.js'
 class Question extends Component{
   constructor(props){
     super(props)
-    this.updateInputValue = this.updateInputValue.bind(this)
-    this.handleConditionChange = this.handleConditionChange.bind(this.conditions)
+    this.updateInputValue = updateInputValue.bind(this)
+    this.handleConditionChange = handleConditionChange.bind(this)
   }
   addSubQuestion = (e) => {
     let question = { ...this.props.question }
     
     question['subQ'].push(QuestionNode({isSub: true, conditions:{condition: 'equals', value: '' }}))
     
-    this.props.updateQuestions(this.props.path, question)
-  }
-  handleConditionChange(e){
-    let { name, value } = e.target
-    console.log(name, value)
-    if( !name ){
-      console.log('parent:', e.target.parentElement)
-      console.log('target:', e.target)
-      name = e.target.parentElement.getAttribute('name') || e.target.getAttribute('name')
-      
-    } 
-    console.log(name, value, e.target)
-  }
-  updateInputValue(e){
-    let { name, value } = e.target, 
-        question = {...this.props.question }
-        console.log(e.target, name, value)
-    if( !name ){
-      value = e.target.parentElement.getAttribute('name') || e.target.getAttribute('name')
-      name = 'type'
-    } 
-    question[name] = value
     this.props.updateQuestions(this.props.path, question)
   }
   
@@ -56,7 +36,13 @@ class Question extends Component{
     return(
       <div style={styles}>
         { this.props.question.isSub ? 
-          <ConditionInput name='condition' value={conditions.condition} onChange={this.handleConditionChange} type={props.parentType} /> : null }
+        <Form.Group>
+          <ConditionSelect 
+              name='condition' value={conditions.condition} onChange={this.handleConditionChange} type={props.parentType} />
+            <ConditionAnswer value={conditions.value} onChange={this.handleConditionChange} type={props.parentType} />
+        </Form.Group>
+        
+        : null }
         
         <QuestionInput type={question.type} value={question.question} onChange={this.updateInputValue}/>
         

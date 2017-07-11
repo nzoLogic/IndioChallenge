@@ -21,7 +21,6 @@ function deleteQuestion(){
 
 function stringify(value, cb){
   let string = JSON.stringify(value)
-  console.log(string)
   return cb ? cb(string) : string
 }
 

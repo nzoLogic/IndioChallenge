@@ -1,14 +1,14 @@
 const numberOptions = [
-  {key: 'equals', value:'equals', text: 'Equals' },
-  {key: 'less', value: 'less', text: 'Less than' },
-  {key: 'greater', value: 'greater', text: 'Greater than' }
+  {name: 'equals', text: 'Equals', value:'equals' },
+  {name: 'less', text: 'Less than', value: 'less' },
+  {name: 'greater', text: 'Greater than', value: 'greater' }
 ]
 const equalsConditions = [
-  {key: 'equals', name: 'condition', value: 'equals', text: 'Equals' }
+  {name: 'equals', text: 'Equals', value: 'equals' }
 ]
 const yesNoOptions = [
-  {key: 'yes', name: 'value', value: 'yes', text: 'Yes'},
-  {key: 'no', name: 'value', value: 'no', text: 'No'}
+  {key: 'yes', name: 'yes', value: 'yes', text: 'Yes'},
+  {key: 'no', name: 'no', value: 'no', text: 'No' }
 ]
 
 export {
