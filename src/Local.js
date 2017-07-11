@@ -7,6 +7,7 @@ function checkStorage( key ){
 }
 
 function saveQuestions( questions ){
+  console.log('save questions', questions)
    return window.localStorage.setItem('questions', questions)
 }
 
@@ -18,11 +19,12 @@ function addQuestion(){
 
 function deleteQuestion(path){
   const { questions } = this.state
-  _.unset(questions, path)
+  _.pullAt(questions, path)
   this.setState({questions: questions})
 }
 
 function stringify(value, cb){
+  console.log('value:', value)
   let string = JSON.stringify(value)
   return cb ? cb(string) : string
 }
