@@ -6,11 +6,10 @@
     "react-scripts": "1.0.10"
   },
   "dependencies": {
+    "formsy-react": "^0.19.5",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-form": "^1.2.8",
-    "react-monocle": "^0.1.6",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.70.0"
   },
