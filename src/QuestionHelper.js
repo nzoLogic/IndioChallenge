@@ -27,7 +27,6 @@ function updateInputValue(e){
     question[name] = value
     this.props.updateQuestions(this.props.path, question)
 }
-
   
 export {
   handleConditionChange,

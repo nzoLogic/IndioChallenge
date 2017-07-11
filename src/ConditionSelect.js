@@ -3,7 +3,6 @@ import { Form, Input, Select } from 'semantic-ui-react'
 import { numberOptions, equalsConditions, yesNoOptions } from './Options.js'
 
 const whichCondition = (type) => {
-  console.log(type)
   if(type === 'number') return numberOptions
   return equalsConditions
 }

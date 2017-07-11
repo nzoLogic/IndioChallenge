@@ -9,7 +9,7 @@ const typeOptions = [
 
 const TypeInput = (props) => {
   return(
-    <Form.Field inline control={Select} label='Type' name='type' options={typeOptions} value={props.type} placeholder='select type' onChange={props.onChange}/>
+    <Form.Field inline control={Select} label='Type' name='type' options={typeOptions} defaultValue={props.type} placeholder='select type' onChange={props.onChange}/>
   )
 }
 
