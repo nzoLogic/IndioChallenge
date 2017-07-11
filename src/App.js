@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Button } from 'semantic-ui-react'
 import _ from 'lodash'
-import { checkStorage, addQuestion, saveQuestions, stringify } from './Local.js'
+import { checkStorage, addQuestion, saveQuestions, stringify, deleteQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
 import QuestionForm from './QuestionForm.js'
 
@@ -13,6 +13,7 @@ class App extends Component {
     }
     this.checkStorage = checkStorage
     this.addQuestion = addQuestion.bind(this)
+    this.deleteQuestion = deleteQuestion.bind(this)
     this.handleTabClick = this.handleTabClick.bind(this)
     this.updateQuestions = this.updateQuestions.bind(this)
   }
@@ -41,7 +42,7 @@ class App extends Component {
         <h3> Form builder</h3>
         <TabMenu handleTabClick={this.handleTabClick} activeItem={this.state.activeItem}/>
         
-        <QuestionForm questions={questions} updateQuestions={this.updateQuestions} />
+        <QuestionForm questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} />
         
         <Button primary onClick={this.addQuestion}>
           Add Input

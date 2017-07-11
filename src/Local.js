@@ -1,5 +1,6 @@
 import React from 'react'
 import QuestionNode from './QuestionNode.js'
+import _ from 'lodash'
 
 function checkStorage( key ){
   return JSON.parse(window.localStorage.getItem(key)) || [] 
@@ -15,8 +16,10 @@ function addQuestion(){
   this.setState({questions: questions})
 }
 
-function deleteQuestion(){
-  
+function deleteQuestion(path){
+  const { questions } = this.state
+  _.unset(questions, path)
+  this.setState({questions: questions})
 }
 
 function stringify(value, cb){

@@ -12,6 +12,7 @@ class Question extends Component{
     super(props)
     this.updateInputValue = updateInputValue.bind(this)
     this.handleConditionChange = handleConditionChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
   addSubQuestion = (e) => {
     let question = { ...this.props.question }
@@ -19,6 +20,10 @@ class Question extends Component{
     question['subQ'].push(QuestionNode({isSub: true, conditions:{condition: 'equals', value: '' }}))
     
     this.props.updateQuestions(this.props.path, question)
+  }
+  
+  handleDelete(e){
+    this.props.deleteQuestion( this.props.path )
   }
   
   increaseMargin(margin){
@@ -50,10 +55,10 @@ class Question extends Component{
         
         <Form.Group>
           <Button onClick={this.addSubQuestion}>Add Sub-Input</Button>
-          <Button>Delete</Button>
+          <Button onClick={this.handleDelete}>Delete</Button>
         </Form.Group>
         
-        { question.subQ.map( (q, i) => <Question key={i} path={`${props.path}.subQ[${i}]`} question={q} marginLeft={this.increaseMargin(props.marginLeft)} updateQuestions={this.props.updateQuestions} parentType={question.type} />) }
+        { question.subQ.map( (q, i) => <Question key={i} path={`${props.path}.subQ[${i}]`} question={q} marginLeft={this.increaseMargin(props.marginLeft)} updateQuestions={this.props.updateQuestions} deleteQuestion={this.props.deleteQuestion} parentType={question.type} />) }
       </div>
     )
   }

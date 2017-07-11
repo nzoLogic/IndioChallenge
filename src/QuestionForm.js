@@ -9,7 +9,7 @@ class QuestionForm extends Component {
   
   setQuestions = (question, i) => {
     return(
-      <Question key={i} path={`[${i}]`} question={question} updateQuestions={this.props.updateQuestions} marginLeft={0}  />
+      <Question key={i} path={`[${i}]`} question={question} updateQuestions={this.props.updateQuestions} deleteQuestion={this.props.deleteQuestion} marginLeft={0}  />
     )
   }
   render(){
