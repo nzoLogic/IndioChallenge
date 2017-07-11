@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Select } from 'semantic-ui-react'
+import { Form, Input, Select, Message } from 'semantic-ui-react'
 import { yesNoOptions } from './Options.js'
 
 const ConditionAnswer = (props) => {
@@ -17,8 +17,9 @@ const select = (props) => {
 }
 
 const input = (props) => {
+  const type = props.parentType === 'number' ? 'number' : 'text'
   return(
-    <Form.Field inline control={Input} name='value' value={props.value} placeholder='answer' onChange={props.onChange} />
+    <Form.Field inline required type={type} control={Input} name='value' value={props.value} placeholder='answer' onChange={props.onChange} />
   )
 }
 

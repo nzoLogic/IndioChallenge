@@ -43,7 +43,7 @@ class Question extends Component{
         <Form.Group>
           <ConditionSelect 
               name='condition' value={question.conditions.condition} onChange={this.handleConditionChange} type={props.parentType} />
-            <ConditionAnswer value={question.conditions.value} onChange={this.handleConditionChange} type={props.parentType} />
+          <ConditionAnswer value={question.conditions.value} onChange={this.handleConditionChange} type={props.parentType} />
         </Form.Group>
         
         : null }

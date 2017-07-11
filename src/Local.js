@@ -18,8 +18,15 @@ function addQuestion(){
 }
 
 function deleteQuestion(path){
+<<<<<<< Updated upstream
   const { questions } = this.state
   _.pullAt(questions, path)
+=======
+  let { questions } = this.state
+   _.pullAt(questions, [path])
+
+  console.log(questions)
+>>>>>>> Stashed changes
   this.setState({questions: questions})
 }
 
