@@ -3,7 +3,6 @@ import { Form, Input, Select } from 'semantic-ui-react'
 import { yesNoOptions } from './Options.js'
 
 const ConditionAnswer = (props) => {
-  console.log(props)
   return props.type === 'yn' ? select(props) : input(props)
 }
 

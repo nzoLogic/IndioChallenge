@@ -4,7 +4,6 @@ import _ from 'lodash'
 import { checkStorage, addQuestion, saveQuestions, stringify } from './Local.js'
 import TabMenu from './TabMenu.js'
 import QuestionForm from './QuestionForm.js'
-import QuestionNode from './QuestionNode.js'
 
 class App extends Component {
   constructor(props){

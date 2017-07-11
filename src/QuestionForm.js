@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Segment } from 'semantic-ui-react'
 import Question from './Question.js'
-import { updateQuestionState } from './Local.js'
-import QuestionNode from './QuestionNode.js'
 
 class QuestionForm extends Component {
   constructor(props){
