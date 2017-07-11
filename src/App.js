@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { checkStorage, addQuestion, saveQuestions, stringify, deleteQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
 import Export from './Export.js'
+import Preview from './Preview.js'
 import QuestionForm from './QuestionForm.js'
 
 
@@ -27,11 +28,9 @@ class App extends Component {
   }
   componentWillMount(){
     const questions = checkStorage('questions')
-    console.log(questions)
     this.setState({questions: questions})
   }
   componentDidUpdate(){
-    console.log('component updated')
     const { questions } = this.state
     stringify( questions, saveQuestions)
   }
@@ -44,7 +43,7 @@ class App extends Component {
     const VIEWS = {
       'Create': <QuestionForm 
       questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} /> ,
-    'Preview': null,
+    'Preview': <Preview questions={questions}/>,
     'Export': <Export />
     }
     return (
