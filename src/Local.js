@@ -27,5 +27,16 @@ function stringify(value, cb){
   return cb ? cb(string) : string
 }
 
+function exportStorage(){
+  return window.localStorage.getItem('questions')
+}
 
-export { checkStorage, addQuestion, deleteQuestion, saveQuestions, stringify }
+
+export { 
+  checkStorage, 
+  addQuestion, 
+  deleteQuestion, 
+  saveQuestions, 
+  stringify, 
+  exportStorage 
+}

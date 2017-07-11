@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Reveal } from 'semantic-ui-react'
 import _ from 'lodash'
 import { checkStorage, addQuestion, saveQuestions, stringify, deleteQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
+import Export from './Export.js'
 import QuestionForm from './QuestionForm.js'
+
 
 class App extends Component {
   constructor(props){
@@ -37,12 +39,19 @@ class App extends Component {
   
   render() {
     const { questions } = this.state
+    const { activeItem } = this.state
+    const VIEWS = {
+      'Create': <QuestionForm 
+      questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} />,
+    'Preview': null,
+    'Export': <Export />
+    }
     return (
       <Container>
         <h3> Form builder</h3>
         <TabMenu handleTabClick={this.handleTabClick} activeItem={this.state.activeItem}/>
         
-        <QuestionForm questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} />
+          { VIEWS[activeItem] }
         
         <Button primary onClick={this.addQuestion}>
           Add Input
