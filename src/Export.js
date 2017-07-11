@@ -5,9 +5,9 @@ import { exportStorage } from './Local.js'
 const Export = (props) => {
   const data = exportStorage() || "Start creating!"
   return(
-    <Segment fluid>
+    <Segment>
     <Form>
-      <Form.Field fluid control={TextArea} value={data} />
+      <Form.Field control={TextArea} value={data} />
       </Form>
     </Segment>
   )
