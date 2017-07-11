@@ -43,7 +43,7 @@ class App extends Component {
     const VIEWS = {
       'Create': <QuestionForm 
       questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} /> ,
-    'Preview': <Preview questions={questions}/>,
+    'Preview': <Preview />,
     'Export': <Export />
     }
     return (
