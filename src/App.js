@@ -27,6 +27,7 @@ class App extends Component {
   }
   componentWillMount(){
     const questions = checkStorage('questions')
+    console.log(questions)
     this.setState({questions: questions})
   }
   componentDidUpdate(){
@@ -42,7 +43,7 @@ class App extends Component {
     const { activeItem } = this.state
     const VIEWS = {
       'Create': <QuestionForm 
-      questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} />,
+      questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} /> ,
     'Preview': null,
     'Export': <Export />
     }

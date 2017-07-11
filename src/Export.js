@@ -3,7 +3,7 @@ import { Form, TextArea, Segment } from 'semantic-ui-react'
 import { exportStorage } from './Local.js'
 
 const Export = (props) => {
-  const data = exportStorage()
+  const data = exportStorage() || "Start creating!"
   return(
     <Segment fluid>
     <Form>

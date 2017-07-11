@@ -33,18 +33,17 @@ class Question extends Component{
   render(){
     const props = this.props
     const question = props.question
-    const conditions = question.conditions
 
     const styles = {
       marginLeft: props.marginLeft 
     }
     return(
       <div style={styles}>
-        { this.props.question.isSub ? 
+        { props.question.isSub ? 
         <Form.Group>
           <ConditionSelect 
-              name='condition' value={conditions.condition} onChange={this.handleConditionChange} type={props.parentType} />
-            <ConditionAnswer value={conditions.value} onChange={this.handleConditionChange} type={props.parentType} />
+              name='condition' value={question.conditions.condition} onChange={this.handleConditionChange} type={props.parentType} />
+            <ConditionAnswer value={question.conditions.value} onChange={this.handleConditionChange} type={props.parentType} />
         </Form.Group>
         
         : null }
