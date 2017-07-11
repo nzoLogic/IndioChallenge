@@ -10,7 +10,7 @@ const whichCondition = (type) => {
 
 const ConditionInput = (props) => {
   const options = props.type === 'number' ? numberOptions : equalsConditions
-  console.log(options, props)
+
   return(
     <Form.Field inline selection control={Select} name='condition' label='Condition' options={options} value={props.value} onChange={props.onChange} />
   )

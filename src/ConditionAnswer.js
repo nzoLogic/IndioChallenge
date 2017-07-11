@@ -9,7 +9,7 @@ const ConditionAnswer = (props) => {
 const select = (props) => {
   console.log('select props: ', props)
   return(
-    <Form.Field inline
+    <Form.Field inline required
     control={Select} options={yesNoOptions} value={props.value} 
    placeholder='answer' onChange={props.onChange} 
     />
@@ -17,9 +17,10 @@ const select = (props) => {
 }
 
 const input = (props) => {
-  const type = props.parentType === 'number' ? 'number' : 'text'
+  const type = props.type === 'number' ? 'number' : 'text'
+  console.log(props.type, type)
   return(
-    <Form.Field inline required type={type} control={Input} name='value' value={props.value} placeholder='answer' onChange={props.onChange} />
+    <Input required type={type} name='value' value={props.value} placeholder='answer' onChange={props.onChange} />
   )
 }
 

@@ -2,6 +2,7 @@ const conditionBook = ['equals', 'greater', 'less']
 const conditionValueBook = ['yes', 'no']
 
 function handleConditionChange(e){
+  console.log(this, e.target)
   let { name, value } = e.target,
       question = { ...this.props.question },
       conditions = question.conditions
