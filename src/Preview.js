@@ -19,7 +19,7 @@ class Preview extends Component {
     return(
       <Form>
         {
-          questions.map( (q, i) => <PreviewQuestion key={i} question={q} />)
+          questions.map((q, i) => <PreviewQuestion key={i} question={q} />)
         }
       </Form>
     )
