@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Segment } from 'semantic-ui-react'
+import { Form, Segment, Button } from 'semantic-ui-react'
 import Question from './Question.js'
 
 class QuestionForm extends Component {
@@ -17,6 +17,10 @@ class QuestionForm extends Component {
     return(
       <Form>
           { questions.map( this.setQuestions ) }
+          
+          <Button primary onClick={this.props.addQuestion}>
+              Add Input
+          </Button>
       </Form>
     )
   }

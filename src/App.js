@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Button, Reveal } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import _ from 'lodash'
 import { checkStorage, addQuestion, saveQuestions, stringify, deleteQuestion } from './Local.js'
 import TabMenu from './TabMenu.js'
@@ -42,7 +42,7 @@ class App extends Component {
     const { activeItem } = this.state
     const VIEWS = {
       'Create': <QuestionForm 
-      questions={questions} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} /> ,
+      questions={questions} addQuestion={this.addQuestion} deleteQuestion={this.deleteQuestion} updateQuestions={this.updateQuestions} /> ,
     'Preview': <Preview />,
     'Export': <Export />
     }
@@ -52,10 +52,6 @@ class App extends Component {
         <TabMenu handleTabClick={this.handleTabClick} activeItem={this.state.activeItem}/>
         
           { VIEWS[activeItem] }
-        
-        <Button primary onClick={this.addQuestion}>
-          Add Input
-        </Button>
       </Container>
     );
   }
