@@ -17,8 +17,13 @@ function addQuestion(){
 }
 
 function deleteQuestion(path){
-  const { questions } = this.state
-  _.pullAt(questions, path)
+  let { questions } = this.state
+  console.log('path:', path)
+  console.log('get: ', _.get(questions, path))
+  //  _.remove(questions, _.get(questions, path, 'nothing'))
+  questions = _.omit(questions, path)
+  questions = _.toArray(questions)
+  console.log(questions)
   this.setState({questions: questions})
 }
 
