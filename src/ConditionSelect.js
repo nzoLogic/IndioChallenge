@@ -1,11 +1,6 @@
 import React from 'react'
-import { Form, Input, Select } from 'semantic-ui-react'
-import { numberOptions, equalsConditions, yesNoOptions } from './Options.js'
-
-const whichCondition = (type) => {
-  if(type === 'number') return numberOptions
-  return equalsConditions
-}
+import { Form, Select } from 'semantic-ui-react'
+import { numberOptions, equalsConditions } from './Options.js'
 
 const ConditionInput = (props) => {
   const options = props.type === 'number' ? numberOptions : equalsConditions

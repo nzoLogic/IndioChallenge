@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Radio, Label } from 'semantic-ui-react'
+import { Form, Input, Radio } from 'semantic-ui-react'
 import _ from 'lodash'
 
 class PreviewQuestion extends Component {

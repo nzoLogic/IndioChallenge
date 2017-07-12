@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Menu, Button, Container } from 'semantic-ui-react'
+import React from 'react'
+import { Menu } from 'semantic-ui-react'
 
 const TabMenu = (props) => {
   const { activeItem } = props

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Select, Message } from 'semantic-ui-react'
+import { Form, Input, Select } from 'semantic-ui-react'
 import { yesNoOptions } from './Options.js'
 
 const ConditionAnswer = (props) => {

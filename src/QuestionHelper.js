@@ -1,5 +1,4 @@
 const conditionBook = ['equals', 'greater', 'less']
-const conditionValueBook = ['yes', 'no']
 
 function handleConditionChange(e){
   console.log(this, e.target)
@@ -17,9 +16,8 @@ function handleConditionChange(e){
 
 function updateInputValue(e){
     let { name, value } = e.target, 
-        question = {...this.props.question },
-        conditions = question.conditions
-
+        question = {...this.props.question }
+        
     if( !name ){
       value = e.target.parentElement.getAttribute('name') || e.target.getAttribute('name')
       name = 'type'

@@ -1,29 +1,23 @@
-import React, { Component } from 'react'
-import { Form, Segment, Button } from 'semantic-ui-react'
+import React from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import Question from './Question.js'
 
-class QuestionForm extends Component {
-  constructor(props){
-    super(props)
-  }
-  
-  setQuestions = (question, i) => {
-    return(
-      <Question key={i} path={`[${i}]`} question={question} updateQuestions={this.props.updateQuestions} deleteQuestion={this.props.deleteQuestion} marginLeft={0}  />
-    )
-  }
-  render(){
-    const { questions } = this.props 
-    return(
-      <Form>
-          { questions.map( this.setQuestions ) }
+const QuestionForm = (props) => {
+  const { questions } = props 
+  return(
+    <Form>
+      { 
+        questions.map((question, i) => {
+          return(
+            <Question key={i} path={`[${i}]`} question={question} updateQuestions={props.updateQuestions} deleteQuestion={props.deleteQuestion} marginLeft={0}  />
+          )
+        }) 
+      }
           
-          <Button primary onClick={this.props.addQuestion}>
+      <Button primary onClick={props.addQuestion}>
               Add Input
-          </Button>
-      </Form>
-    )
-  }
-  
+      </Button>
+    </Form>
+    )  
 }
 export default QuestionForm
