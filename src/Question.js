@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Segment } from 'semantic-ui-react'
 import { updateInputValue, handleConditionChange } from './QuestionHelper.js'
 import ConditionSelect from './ConditionSelect.js'
 import ConditionAnswer from './ConditionAnswer.js'
@@ -27,19 +27,18 @@ class Question extends Component{
     this.props.deleteQuestion( this.props.path, isSub)
   }
   
-  increaseMargin(margin){
-    return `${margin + 20}px`
-  }
   
   render(){
     const props = this.props
     const question = props.question
+    const subMargin = props.marginLeft + 20
 
     const styles = {
-      marginLeft: props.marginLeft 
+      marginLeft: `${props.marginLeft}px`
     }
     return(
       <div style={styles}>
+    <Segment>
         { props.question.isSub ? 
         <Form.Group>
           <ConditionSelect 
@@ -54,12 +53,17 @@ class Question extends Component{
         
         <TypeInput type={question.type} onChange={this.updateInputValue} />
         
-        <Form.Group>
+        <Form.Group widths='equal'>
           <Button onClick={this.addSubQuestion}>Add Sub-Input</Button>
           <Button onClick={this.handleDelete}>Delete</Button>
         </Form.Group>
-        
-        { question.subQ.map( (q, i) => <Question key={i} path={`${props.path}.subQ[${i}]`} question={q} marginLeft={this.increaseMargin(props.marginLeft)} updateQuestions={this.props.updateQuestions} deleteQuestion={this.props.deleteQuestion} parentType={question.type} />) }
+      </Segment>
+      
+        { question.subQ.map( (q, i) => 
+          <Question key={i} 
+            path={`${props.path}.subQ[${i}]`} 
+            question={q} marginLeft={subMargin} updateQuestions={this.props.updateQuestions} deleteQuestion={this.props.deleteQuestion} parentType={question.type} 
+          /> ) }
       </div>
     )
   }

@@ -57,11 +57,14 @@ class PreviewQuestion extends Component {
   }
   render(){
     const { metCondition } = this.state
+    const style = {
+      marginLeft: `${this.props.marginLeft}px`
+    }
     let question = { ...this.props.question }
 
     return(
       <div>
-        <Form.Group>
+        <Form.Group style={style}>
           <Form.Field>
             <label> {question.question} </label>
             { question.type === 'yn' ? this.radio() : this.input(this.props) }
@@ -69,7 +72,7 @@ class PreviewQuestion extends Component {
         </Form.Group>
         
         { metCondition ? 
-          <PreviewQuestion question={metCondition}/>  : null }
+          <PreviewQuestion question={metCondition} marginLeft={this.props.marginLeft + 20}/>  : null }
       </div>
       )
   }

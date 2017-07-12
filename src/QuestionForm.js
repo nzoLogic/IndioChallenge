@@ -13,7 +13,6 @@ const QuestionForm = (props) => {
           )
         }) 
       }
-          
       <Button primary onClick={props.addQuestion}>
               Add Input
       </Button>
