@@ -16,14 +16,19 @@ function addQuestion(){
   this.setState({questions: questions})
 }
 
-function deleteQuestion(path){
-  let { questions } = this.state
-  console.log('path:', path)
-  console.log('get: ', _.get(questions, path))
-  //  _.remove(questions, _.get(questions, path, 'nothing'))
+function deleteQuestion(path, isSub){
+  let { questions } = this.state,
+      parent
+  
   questions = _.omit(questions, path)
   questions = _.toArray(questions)
-  console.log(questions)
+
+  if( isSub ){
+    parent = _.toPath(path).slice(0, -1) 
+    _.pull(_.get(questions, parent), null, undefined)
+  }
+  else _.pull(questions, null, undefined)
+  
   this.setState({questions: questions})
 }
 

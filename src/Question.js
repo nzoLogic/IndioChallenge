@@ -23,7 +23,8 @@ class Question extends Component{
   }
   
   handleDelete(e){
-    this.props.deleteQuestion( this.props.path )
+    let { isSub } = this.props.question
+    this.props.deleteQuestion( this.props.path, isSub)
   }
   
   increaseMargin(margin){
