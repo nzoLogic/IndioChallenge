@@ -17,7 +17,7 @@ class PreviewQuestion extends Component {
     this.onEnter = this.onEnter.bind(this)
   }
   handleRef(r){
-    r.inputRef.onkeyup = this.onEnter
+    if(r !== null) r.inputRef.onblur = this.handleAnswer
   }
   updateAnswer(e, { name, value }){
     console.log(name, value)
@@ -40,7 +40,7 @@ class PreviewQuestion extends Component {
     if(e.code === 'Enter') this.handleAnswer()
   }
   input(props){
-    return <Input 
+    return <Input className='answer'
             focus={false}
             ref={this.handleRef}
             name='answer' 
@@ -61,18 +61,19 @@ class PreviewQuestion extends Component {
     const state = { ...this.state }
     const { answer } = state
     const { metCondition } = state
-    const question = this.props.question
-    console.log( metCondition )
+    const question = { ...this.props.question }
+
     return(
+      <div>
         <Form.Group>
           <Form.Field>
             <label> {question.question} </label>
-            { question.type === 'yn' ? this.radio(answer) : this.input(this.props) }
+            { question.type === 'yn' ? this.radio() : this.input(this.props) }
           </Form.Field>
-          
-          { metCondition ? <Form.Field> <PreviewQuestion question={metCondition}/>
-              </Form.Field> : null }
         </Form.Group>
+        
+        { metCondition ? <PreviewQuestion question={metCondition}/>  : null }
+      </div>
       )
   }
 }
