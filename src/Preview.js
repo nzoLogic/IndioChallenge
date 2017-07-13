@@ -18,7 +18,7 @@ class Preview extends Component {
     const { questions } = this.state
     return(
       <Form>
-        {
+        { 
           questions.map((q, i) => <PreviewQuestion key={i} question={q} marginLeft={0} />)
         }
       </Form>

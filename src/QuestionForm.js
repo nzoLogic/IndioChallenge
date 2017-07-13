@@ -5,6 +5,8 @@ import Question from './Question.js'
 const QuestionForm = (props) => {
   const { questions } = props 
   return(
+    <div>
+      <br></br>
     <Form>
       { 
         questions.map((question, i) => {
@@ -17,6 +19,7 @@ const QuestionForm = (props) => {
               Add Input
       </Button>
     </Form>
+  </div>
     )  
 }
 export default QuestionForm

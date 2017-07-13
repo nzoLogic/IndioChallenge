@@ -64,6 +64,7 @@ class PreviewQuestion extends Component {
 
     return(
       <div>
+        <br></br>
         <Form.Group style={style}>
           <Form.Field>
             <label> {question.question} </label>

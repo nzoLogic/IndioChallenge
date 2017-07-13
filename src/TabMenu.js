@@ -5,7 +5,7 @@ const TabMenu = (props) => {
   const { activeItem } = props
   return(
       <div>
-        <Menu>
+        <Menu pointing secondary color='blue'>
           <Menu.Item
             name='Create'
             active={activeItem === 'Create'}
