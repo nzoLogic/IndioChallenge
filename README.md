@@ -64,3 +64,4 @@ The way I solved updating deeply nested subquestions was by attaching a *path* p
  * Form components are buggy and missing certain event properties
 2. Make the Export text area box the size of it's parent container
 3. Beautify the rendered JSON in Export to be more readable
+4. Clean up the src/ directory by putting files in sub-directories relative to their views and functionality.
