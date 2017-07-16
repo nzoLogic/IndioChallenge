@@ -11,6 +11,7 @@ import QuestionForm from './QuestionForm.js'
 
   Primary control point for updating the state of the application, reading and writing to local storage, and passing data down to the children views.
   
+  Children views: QuestionForm.js, Preview.js, Export.js
 
 */
 class App extends Component {
