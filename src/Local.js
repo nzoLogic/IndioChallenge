@@ -2,6 +2,9 @@ import React from 'react'
 import QuestionNode from './QuestionNode.js'
 import _ from 'lodash'
 
+/* 
+  Library of helper functions dealing with updating, deleting, and converting JSON data with localStorage object
+*/
 function checkStorage( key ){
   return JSON.parse(window.localStorage.getItem(key)) || [] 
 }
@@ -16,6 +19,11 @@ function addQuestion(){
   this.setState({questions: questions})
 }
 
+/* 
+  deletes question at the parent level
+  path: string, location of node 
+  isSub: bool
+*/
 function deleteQuestion(path, isSub){
   let { questions } = this.state,
       parent
@@ -31,7 +39,10 @@ function deleteQuestion(path, isSub){
   
   this.setState({questions: questions})
 }
-
+/* 
+  JSON stringify helper 
+  takes optional callback
+*/ 
 function stringify(value, cb){
   let string = JSON.stringify(value)
   return cb ? cb(string) : string

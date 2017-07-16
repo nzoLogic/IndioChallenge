@@ -7,7 +7,12 @@ import Export from './Export.js'
 import Preview from './Preview.js'
 import QuestionForm from './QuestionForm.js'
 
+/*
 
+  Primary control point for updating the state of the application, reading and writing to local storage, and passing data down to the children views.
+  
+
+*/
 class App extends Component {
   constructor(props){
     super(props)

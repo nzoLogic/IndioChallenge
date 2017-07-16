@@ -2,6 +2,12 @@ import React from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import Question from './Question.js'
 
+
+/* 
+  Creates a stateless Form component based on the props passed down by App.state.questions 
+  
+  Passes methods for updating the root node, App, down to each Question child 
+*/ 
 const QuestionForm = (props) => {
   const { questions } = props 
   return(

@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import { Form, Input, Radio } from 'semantic-ui-react'
 import _ from 'lodash'
 
+
+/* 
+
+  Controlled component delegates logic of each input based on the updated state of the question answered
+  
+  If an answer meets a condition, metCondition is a PreviewQuestion component with the data that matched based on handleAnswer 
+  
+
+*/
 class PreviewQuestion extends Component {
   constructor(props){
     super(props)

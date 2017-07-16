@@ -1,3 +1,5 @@
+/* Dictionary for Select and Radio form inputs */ 
+
 const numberOptions = [
   {name: 'equals', text: 'Equals', value:'equals' },
   {name: 'less', text: 'Less than', value: 'less' },

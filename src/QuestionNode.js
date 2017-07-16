@@ -1,4 +1,4 @@
-
+// data model each question node
 const QuestionNode = ({
   question='', 
   type='text', 

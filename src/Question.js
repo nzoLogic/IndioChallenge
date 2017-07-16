@@ -7,6 +7,15 @@ import TypeInput from './TypeInput.js'
 import QuestionInput from './QuestionInput.js'
 import QuestionNode from './QuestionNode.js'
 
+/*
+  Controlled component 
+  
+  Maintains and updates its own state and calls update to App component accordingly 
+  
+  Handles own rooted sub-question logic by checking isSub properties of Question and rendering Condition components respectively
+
+*/
+
 class Question extends Component{
   constructor(props){
     super(props)
