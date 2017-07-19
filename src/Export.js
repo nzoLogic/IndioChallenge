@@ -7,7 +7,9 @@ const Export = (props) => {
   return(
     <Segment>
     <Form>
-      <Form.Field control={TextArea} value={data} />
+      <Form.Field style={{height: '80vh'}} control={TextArea}>
+        { JSON.stringify(JSON.parse(data), null, ' ') }
+      </Form.Field>
       </Form>
     </Segment>
   )
